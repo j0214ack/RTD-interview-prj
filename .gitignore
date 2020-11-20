@@ -67,3 +67,5 @@ node_modules/
 
 # build directory is built from react-app
 build/
+
+.vscode/
