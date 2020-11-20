@@ -1,0 +1,20 @@
+{
+  "name": "rtd-interview-app",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "ci": "echo \"CI started\"",
+    "build": "cd react-app && npm run build && cp -r build ../",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/j0214ack/RTD-interview-prj.git"
+  },
+  "author": "Yo Chen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/j0214ack/RTD-interview-prj/issues"
+  },
+  "homepage": "https://github.com/j0214ack/RTD-interview-prj#readme"
+}
