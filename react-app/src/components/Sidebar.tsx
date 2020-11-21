@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import StreamPlayer from "./StreamPlayer";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/rootReducer";
