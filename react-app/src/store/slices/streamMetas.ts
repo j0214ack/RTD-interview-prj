@@ -9,11 +9,21 @@ const streamMetasSlice = createSlice({
   initialState,
   reducers: {
     createStream(draft, action: PayloadAction<StreamMeta>) {
-      console.log(action);
       draft.push({
-        streamId: action.payload.streamId,
-        type: action.payload.type,
+        ...action.payload,
       });
+    },
+    updateStream(draft, action: PayloadAction<Partial<StreamMeta> & Pick<StreamMeta, 'streamId'>>) {
+      const targetIndex = draft.findIndex(
+        (streamMeta) => streamMeta.streamId === action.payload.streamId
+      );
+
+      if (targetIndex !== -1) {
+        draft[targetIndex] = {
+          ...draft[targetIndex],
+          ...action.payload
+        }
+      }
     },
     deleteStream(draft, action: PayloadAction<string>) {
       console.log("delete local stream");
@@ -27,5 +37,5 @@ const streamMetasSlice = createSlice({
 
 const { actions, reducer } = streamMetasSlice;
 
-export const { createStream, deleteStream } = actions;
+export const { createStream, deleteStream, updateStream } = actions;
 export default reducer;

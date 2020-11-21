@@ -10,4 +10,7 @@ type StreamInfo = {
   error?: any;
 };
 
-type StreamMeta = Pick<StreamInfo, "streamId" | "type">;
+type StreamMeta = Pick<
+  StreamInfo,
+  "streamId" | "type" | "audioMuted" | "videoMuted"
+>;

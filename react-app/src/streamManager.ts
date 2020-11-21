@@ -1,6 +1,10 @@
 import AgoraRTC from "agora-rtc-sdk";
 import store from "./store";
-import { createStream, deleteStream } from "./store/slices/streamMetas";
+import {
+  createStream,
+  deleteStream,
+  updateStream,
+} from "./store/slices/streamMetas";
 class StreamManager {
   streams: StreamInfo[];
 
@@ -23,7 +27,7 @@ class StreamManager {
             type: "local",
             stream: localStream,
             videoMuted: false,
-            audioMuted: false
+            audioMuted: false,
           });
         },
         (error) => {
@@ -32,7 +36,7 @@ class StreamManager {
             type: "local",
             videoMuted: false,
             audioMuted: false,
-            error
+            error,
           });
           reject(error);
         }
@@ -62,6 +66,42 @@ class StreamManager {
         createStream({
           streamId: streamInfo.streamId,
           type: streamInfo.type,
+          audioMuted: streamInfo.audioMuted,
+          videoMuted: streamInfo.videoMuted,
+        })
+      );
+    }
+  }
+
+  toggleStreamVideo(streamId: string) {
+    const streamInfo = this.getStreamInfo(streamId)
+    if (streamInfo && streamInfo.stream) {
+      const muted = streamInfo.videoMuted;
+      if (muted) streamInfo.stream.unmuteVideo();
+      else streamInfo.stream.muteVideo();
+
+      streamInfo.videoMuted = !muted;
+      store.dispatch(
+        updateStream({
+          streamId,
+          videoMuted: !muted,
+        })
+      );
+    }
+  }
+
+  toggleStreamAudio(streamId: string) {
+    const streamInfo = this.getStreamInfo(streamId)
+    if (streamInfo && streamInfo.stream) {
+      const muted = streamInfo.audioMuted;
+      if (muted) streamInfo.stream.unmuteAudio();
+      else streamInfo.stream.muteAudio();
+
+      streamInfo.audioMuted = !muted;
+      store.dispatch(
+        updateStream({
+          streamId,
+          audioMuted: !muted,
         })
       );
     }
@@ -80,9 +120,11 @@ class StreamManager {
   }
 
   removeAllRemoteStreams() {
-    this.streams.filter(streamInfo => streamInfo.streamId !== 'local').forEach((streamInfo) => {
-      this.removeStream(streamInfo);
-    });;
+    this.streams
+      .filter((streamInfo) => streamInfo.streamId !== "local")
+      .forEach((streamInfo) => {
+        this.removeStream(streamInfo);
+      });
   }
 }
 

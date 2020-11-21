@@ -78,11 +78,7 @@ function Channel() {
     <React.Fragment>
       <Link to="/">Back to Lobby</Link>
       {remoteStreams.map((streamMeta) => (
-        <StreamPlayerStyled
-          key={streamMeta.streamId}
-          type="remote"
-          streamId={streamMeta.streamId}
-        />
+        <StreamPlayerStyled key={streamMeta.streamId} {...streamMeta} />
       ))}
     </React.Fragment>
   );

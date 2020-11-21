@@ -1,9 +1,7 @@
-import { combineReducers } from '@reduxjs/toolkit';
-import localStreamMeta from './slices/localStreamMeta';
+import { combineReducers } from "@reduxjs/toolkit";
 import streamMetas from "./slices/streamMetas";
 
 const rootReducer = combineReducers({
-  localStreamMeta,
   streamMetas,
 });
 

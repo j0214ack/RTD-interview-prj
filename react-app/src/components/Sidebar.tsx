@@ -8,7 +8,7 @@ function LocalStreamPlayer() {
     state.streamMetas.find((streamMeta) => streamMeta.streamId === "local")
   );
 
-  if (localStreamMeta) return <StreamPlayer streamId="local" type="local" />;
+  if (localStreamMeta) return <StreamPlayer {...localStreamMeta} />;
   return null;
 }
 
