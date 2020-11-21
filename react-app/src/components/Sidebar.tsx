@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import StreamPlayer from "./StreamPlayer";
 import { useSelector } from "react-redux";
-import { RootState } from "./store/rootReducer";
+import { RootState } from "../store/rootReducer";
 
 function LocalStreamPlayer() {
   const localStreamMeta = useSelector((state: RootState) =>

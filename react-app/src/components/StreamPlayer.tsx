@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
-import streamManager from "./streamManager";
+import streamManager from "../streamManager";
 
 type StreamPlayerProps = {
   height?: number;
   width?: number;
+  className?: string;
 } & StreamMeta;
 
 function StreamPlayer({
   height = 165,
   width = 235,
+  className,
   streamId,
   type,
 }: StreamPlayerProps) {
@@ -26,6 +28,7 @@ function StreamPlayer({
 
   return (
     <div
+      className={className}
       style={{
         height,
         width,

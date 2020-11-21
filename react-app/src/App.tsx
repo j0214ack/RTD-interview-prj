@@ -1,29 +1,27 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import styled from "styled-components";
-import Sidebar from "./Sidebar";
-import { RootState } from "./store/rootReducer";
-import StreamPlayer from "./StreamPlayer";
+import Sidebar from "./components/Sidebar";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Lobby from "./components/Lobby";
+import Channel from "./components/Channel";
 
 function App() {
-  const remoteStreams = useSelector((state: RootState) =>
-    state.streamMetas.filter((meta) => meta.streamId !== "local")
-  );
   return (
-    <Container>
-      <Main>
-        {remoteStreams.map((streamMeta) => {
-          return (
-            <StreamPlayer
-              key={streamMeta.streamId}
-              type="remote"
-              streamId={streamMeta.streamId}
-            />
-          );
-        })}
-      </Main>
-      <SidebarStyled />
-    </Container>
+    <Router>
+      <Container>
+        <Main>
+          <Switch>
+            <Route path="/channel">
+              <Channel />
+            </Route>
+            <Route path="/">
+              <Lobby />
+            </Route>
+          </Switch>
+        </Main>
+        <SidebarStyled />
+      </Container>
+    </Router>
   );
 }
 

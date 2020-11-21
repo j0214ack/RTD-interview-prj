@@ -4,6 +4,8 @@ type StreamType = typeof STREAM_TYPES[number];
 type StreamInfo = {
   streamId: string | null;
   type: StreamType;
+  audioMuted: boolean;
+  videoMuted: boolean;
   stream?: AgoraRTC.Stream;
   error?: any;
 };
