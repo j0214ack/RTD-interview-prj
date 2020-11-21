@@ -1,10 +1,10 @@
 import { combineReducers } from '@reduxjs/toolkit';
 import localStreamMeta from './slices/localStreamMeta';
-import remoteStreamMetas from './slices/remoteStreamMetas';
+import streamMetas from "./slices/streamMetas";
 
 const rootReducer = combineReducers({
   localStreamMeta,
-  remoteStreamMetas
+  streamMetas,
 });
 
 export type RootState = ReturnType<typeof rootReducer>
