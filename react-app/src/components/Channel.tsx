@@ -11,7 +11,7 @@ import styled from "styled-components";
 const tempChannelInfo = {
   channelName: "test",
   token:
-    "006c8f5724dda654b68bdd42aa9f4063856IAChxVhalIRz1V2QyiWdSIzsrmsXvLJn+z8JYLI4JZ6Nzgx+f9gAAAAAEADGU1aH6za6XwEAAQDrNrpf",
+    "006c8f5724dda654b68bdd42aa9f4063856IACPSD5hsp/pmhJvEk88/nG3EOgp/1DcjWQ6JHQ9DJGZOAx+f9gAAAAAEABVr+ww38G8XwEAAQDfwbxf",
 };
 
 function useSearchParam(paramName: string, fallbackValue: any) {
